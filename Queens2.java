@@ -123,13 +123,31 @@ public class Queens2
         // 4. finally, select two parents, based on the cumulative probabilities
         // see the pseudocode in RESOURCES > Evolutionary Computation General >
         // Linear Ranking: How to use cumulative probability to select parents
+        // choose the first parent
+        double rand = Math.random();
+
+        int first = 0;
+        while(cumulative[first] < rand) {first++; }
+
+        int second = first;
+
+        // choose the second parent, making sure that it's different to the first
+        while (second == first)
+        {
+            rand = Math.random();
+
+            second = 0;
+            while (cumulative[second] < rand) { second++; }
+        }
+
         
         // YOUR CODE GOES HERE
         // DUMMY CODE TO REMOVE: (which always returns the same two parents)
         parents[0] = new Integer[]{ 10, 6, 4, 2, 8, 11, 5, 12, 9, 1, 3, 7 };
         parents[1] = new Integer[]{ 9, 4, 3, 1, 2, 11, 5, 10, 12, 7, 8, 6 };
         // END OF YOUR CODE
-        
+        parents[0] = population[first];
+        parents[1] = population[second];
         return parents;
     }
     
