@@ -24,7 +24,7 @@ public class Queens
         
         // YOUR CODE GOES HERE
         // DUMMY CODE TO REMOVE:
-        genotype = new Integer[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+        genotype = new Integer[boardSize];
         for(int i=0; i<boardSize; i++){
             int r = 1+new Random().nextInt(12);
             while(Arrays.asList(genotype).contains(r)){
@@ -45,7 +45,15 @@ public class Queens
         // YOUR CODE GOES HERE
         // DUMMY CODE TO REMOVE:
         //int[] genotype1 = new Integer[]{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-        int r1 = new Random().nextInt(12); int r2 = new Random().nextInt(12); System.out.println(" First: " + r1 + " Second chosen: " + r2);
+        if(new Random().nextInt(100)+1 > p*100){
+            return genotype;
+        }
+        System.out.println("pick two different genes at random");
+        int r1 = new Random().nextInt(12); int r2 = new Random().nextInt(12); 
+        while(r2==r1){
+            r2 = new Random().nextInt(12);
+        }
+        System.out.println(" First: " + genotype[r1] + " Second chosen: " + genotype[r2] );
         if(r2>r1){
             for(int i = r2-1; i > r1 ; i--){       
                 int temp2 = genotype[i+1];
@@ -72,8 +80,8 @@ public class Queens
         
         // YOUR CODE GOES HERE
         // DUMMY CODE TO REMOVE:
-        children[0] = new Integer[]{ 5, 4, 2, 11, 6, 8, 9, 1, 10, 12, 7, 3 };
-        children[1] = new Integer[]{ 6, 12, 2, 5, 7, 3, 9, 1, 10, 4, 11, 8 };
+        children[0] = new Integer[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        children[1] = new Integer[]{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
         for(int i=0; i<6; i++){
             children[0][i] = parent0[i];
